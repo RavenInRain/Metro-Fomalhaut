@@ -1,47 +1,30 @@
 extends Node
-class_name ItemDatabase
 
-@export var items: Array[ItemDefinition] = []
-
-var _item_lookup: Dictionary[StringName, ItemDefinition] = {}
-var _is_built: bool = false
+@export var item_definitions: Dictionary[StringName, ItemDefinition] = {}
 
 func _ready() -> void:
-	_build_lookup()
+	load_items_from_folder("res://Assets/Item Definitions/")
 
-# Creates a new Dictionary that stores item definitions by item_key.
-func _build_lookup() -> void:
-	# Clear item_lookup for a fresh start.
-	_item_lookup.clear()
-	
-	# Go through the items array and create Dicitionary entries by key.
-	for item_def: ItemDefinition in items:
-		
-		if item_def == null:
-			print("ItemDatabase: null item definition detected")
-			continue
-		
-		if item_def.item_key.is_empty():
-			push_warning("ItemDatabase: item with empty key detected")
-			continue
-		
-		# Duplicate check.
-		if _item_lookup.has(item_def.item_key):
-			push_warning("ItemDatabase: duplicate item_key '%s'" % item_def.item_key)
-			continue
-		
-		_item_lookup[item_def.item_key] = item_def
-		
-	_is_built = true
-	
-# Fetch ItemDefinition from item_lookup by key.
-func get_item_definition(key: StringName) -> ItemDefinition:
-	# Check if it look_up was built, then build.
-	if not _is_built:
-		_build_lookup()
+func load_items_from_folder(path: String) -> void:
+	var dir := DirAccess.open(path)
+	if dir == null:
+		push_error("Could not open item definition folder: %s" % path)
+		return
 
-	# Fetch itemDefinition by key from item_lookup.
-	var item_def: ItemDefinition = _item_lookup.get(key)
-	if item_def == null:
-		push_warning("ItemDatabase: missing item_key '%s'" % String(key))
-	return item_def
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".tres"):
+			var full_path := path.path_join(file_name)
+			var item_def := load(full_path) as ItemDefinition
+
+			if item_def != null:
+				if item_definitions.has(item_def.item_key):
+					push_warning("Duplicate item key: %s" % item_def.item_key)
+				else:
+					item_definitions[item_def.item_key] = item_def
+
+		file_name = dir.get_next()
+
+	dir.list_dir_end()

@@ -25,12 +25,12 @@ func set_durability_state(new_state: DurabilityDefinition.DurabilityStates) -> v
 	durability_state = new_state
 
 	durability_changed.emit(new_state)
-
+	
 	if old_state != DurabilityDefinition.DurabilityStates.DESTROYED \
 	and new_state == DurabilityDefinition.DurabilityStates.DESTROYED:
 		item_destroyed.emit()
 
-#-# STATE CHECKS
+#-# STATE CHECK HELPERS
 func is_intact() -> bool:
 	return durability_state == DurabilityDefinition.DurabilityStates.INTACT
 
