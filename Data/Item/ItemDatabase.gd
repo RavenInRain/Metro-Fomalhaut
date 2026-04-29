@@ -2,8 +2,11 @@ extends Node
 
 @export var item_definitions: Dictionary[StringName, ItemDefinition] = {}
 
+#-# SETUP
 func _ready() -> void:
 	load_items_from_folder("res://Assets/Item Definitions/")
+	for defs in item_definitions:
+		print(item_definitions[defs])
 
 func load_items_from_folder(path: String) -> void:
 	var dir := DirAccess.open(path)
@@ -28,3 +31,7 @@ func load_items_from_folder(path: String) -> void:
 		file_name = dir.get_next()
 
 	dir.list_dir_end()
+
+#-# UTILITY
+func definition_from_key(item_key: StringName) -> ItemDefinition:
+	return item_definitions[item_key]

@@ -8,10 +8,24 @@ class_name ItemDefinition
 @export var slots: SlotsDefinition
 @export var durability: DurabilityDefinition
 
+## Item's capacity to Destroy/Harm. 
+## Used in the Attack Action.
 @export var woe: ApplicationDefinition
+
+## Item's capacity to Shield/Obscure. 
+## Used in the Defend Action and Interpose.
 @export var ward: ApplicationDefinition
+
+## Item's capacity to be used at range and it's precision.
+## Used in Actions against adjacent Tiles.
 @export var point: ApplicationDefinition
+
+## Item's capacity to be used on multiple targets.
+## Used in Actions against multiple targets in the same tile.
+## If the Item also has Point - Blast ignores Allignment.
 @export var blast: ApplicationDefinition
+
+@export var application_test: TestDefinition
 
 @export var narrative: NarrativeDefinition
 
@@ -45,7 +59,7 @@ func _setup_app(base: float) -> ApplicationDefinition:
 	return app
 
 #-# UTILITY
-## Used in ItemData to fetch Application Base.
+## Used in ItemRuntime to fetch Application Base.
 func get_app(key: StringName) -> ApplicationDefinition:
 	match key:
 		&"woe": return woe

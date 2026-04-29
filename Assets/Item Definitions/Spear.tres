@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjhx5jr5fq4o" path="res://Data/Item/Component Definitions/ApplicationDefinition.gd" id="1_ktyas"]
 [ext_resource type="Script" uid="uid://3hndlqhfj5k5" path="res://Data/Item/Component Definitions/DurabilityDefinition.gd" id="2_qiwc3"]
 [ext_resource type="Script" uid="uid://d1483bjk26jra" path="res://Data/Item/Component Definitions/NarrativeDefinition.gd" id="3_h60ax"]
-[ext_resource type="Script" uid="uid://cl8sqqlvgey60" path="res://Data/Item/Item_Definition.gd" id="4_i257x"]
+[ext_resource type="Script" uid="uid://cl8sqqlvgey60" path="res://Data/Item/ItemDefinition.gd" id="4_i257x"]
 [ext_resource type="Script" uid="uid://bjg063vwsvj8y" path="res://Data/Item/Component Definitions/SlotsDefinition.gd" id="5_lp38y"]
 
 [sub_resource type="Resource" id="Resource_nt8t6"]
