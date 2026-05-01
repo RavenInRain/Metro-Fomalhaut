@@ -17,7 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ItemDatabase="*uid://db1n0i0deouyc"
+DialogueManager="*uid://c3rodes2l3gxb"
+SaveLoadManager="*uid://cy0soohdefu6k"
+ItemDatabase="*uid://c6uyne8okg8st"
 
 [display]
 
@@ -25,6 +27,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/resizable=false
 window/size/borderless=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/safe_resource_loader/plugin.cfg")
 
 [physics]
 

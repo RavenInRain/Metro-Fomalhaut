@@ -1,43 +1,10 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://y0j52u74ndt3"]
 
-[ext_resource type="Script" uid="uid://cjhx5jr5fq4o" path="res://Data/Item/Component Definitions/ApplicationDefinition.gd" id="1_p13gi"]
-[ext_resource type="Script" uid="uid://3hndlqhfj5k5" path="res://Data/Item/Component Definitions/DurabilityDefinition.gd" id="2_l2bde"]
-[ext_resource type="Script" uid="uid://d1483bjk26jra" path="res://Data/Item/Component Definitions/NarrativeDefinition.gd" id="3_f4aa7"]
-[ext_resource type="Script" uid="uid://cl8sqqlvgey60" path="res://Data/Item/ItemDefinition.gd" id="4_khba1"]
-[ext_resource type="Script" uid="uid://bjg063vwsvj8y" path="res://Data/Item/Component Definitions/SlotsDefinition.gd" id="5_0orlo"]
-
-[sub_resource type="Resource" id="Resource_cipf5"]
-script = ExtResource("1_p13gi")
-
-[sub_resource type="Resource" id="Resource_h5v18"]
-script = ExtResource("2_l2bde")
-
-[sub_resource type="Resource" id="Resource_4sd3a"]
-script = ExtResource("3_f4aa7")
-
-[sub_resource type="Resource" id="Resource_5jtie"]
-script = ExtResource("1_p13gi")
-
-[sub_resource type="Resource" id="Resource_w5d26"]
-script = ExtResource("5_0orlo")
-
-[sub_resource type="Resource" id="Resource_vkoru"]
-script = ExtResource("1_p13gi")
-base = 0.5
-
-[sub_resource type="Resource" id="Resource_od1gs"]
-script = ExtResource("1_p13gi")
-base = 0.5
+[ext_resource type="Script" uid="uid://0mf6ey5qhaft" path="res://Data/ResourceData/Items/ItemDefintion.gd" id="1_g13ey"]
 
 [resource]
-script = ExtResource("4_khba1")
+script = ExtResource("1_g13ey")
 item_key = &"sword"
 display_name = "Sword"
-slots = SubResource("Resource_w5d26")
-durability = SubResource("Resource_h5v18")
-woe = SubResource("Resource_od1gs")
-ward = SubResource("Resource_vkoru")
-point = SubResource("Resource_5jtie")
-blast = SubResource("Resource_cipf5")
-narrative = SubResource("Resource_4sd3a")
-metadata/_custom_type_script = "uid://cl8sqqlvgey60"
+damage = 7
+metadata/_custom_type_script = "uid://0mf6ey5qhaft"
