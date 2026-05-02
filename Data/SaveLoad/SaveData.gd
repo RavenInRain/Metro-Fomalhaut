@@ -1,8 +1,12 @@
 extends Resource
 class_name SaveData
 
+#-# METADATA
 @export var game_version: String = ""
-# Temp, will be replaced by comprehensive entity/global save logic.
+@export var player_name: String = ""
+
+#-# CONTENTS
+# HACK: Will be replaced by comprehensive entity/global save logic.
 @export var items: Array[ItemSaveState] = []
 
 func find_item_state(item_key: StringName, instance_id: String) -> ItemSaveState:

@@ -2,6 +2,7 @@ extends Node
 
 const GAME_VERSION: String = "v0.001"
 const SAVE_PATH: String = "user://saves/Save_01.tres"
+var player_name = "John Doe"
 
 var current_save: SaveData
 
@@ -12,11 +13,13 @@ func load_game() -> void:
 	if current_save == null:
 		current_save = SaveData.new()
 		current_save.game_version = GAME_VERSION
+		current_save.player_name = player_name
 
 func save_game() -> void:
 	if current_save == null:
 		current_save = SaveData.new()
 		current_save.game_version = GAME_VERSION
+		current_save.player_name = player_name
 
 	DirAccess.make_dir_recursive_absolute("user://saves")
 	var err := ResourceSaver.save(current_save, SAVE_PATH)

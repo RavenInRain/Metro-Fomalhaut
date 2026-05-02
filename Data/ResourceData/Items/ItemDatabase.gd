@@ -5,9 +5,10 @@ var item_definitions: Dictionary[StringName, ItemDefinition] = {}
 #-# SETUP
 func _ready() -> void:
 	load_items_from_folder("res://Assets/Item Definitions/")
-	print("ItemDatabase loaded:")
-	for defs in item_definitions:
-		print("> " + item_definitions[defs].display_name)
+	print("%s: ( %s ) %s." % [
+		"Item Database loaded", 
+		item_definitions.size(), 
+		"Item Definitions loaded"])
 
 func load_items_from_folder(path: String) -> void:
 	var dir := DirAccess.open(path)

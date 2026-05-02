@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dpq88vdw6bnv"]
+
+[ext_resource type="Script" uid="uid://b4p0nbbn0h4hk" path="res://Data/ResourceData/Items/ItemCardCore.gd" id="1_fexqc"]
+
+[node name="ItemCard" type="Control" unique_id=1159983989]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1620.0
+offset_bottom = -880.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fexqc")
+
+[node name="ItemName" type="Label" parent="." unique_id=974301035]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DamageLabel" type="Label" parent="." unique_id=1760274335]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
