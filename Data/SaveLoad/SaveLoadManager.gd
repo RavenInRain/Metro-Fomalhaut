@@ -14,6 +14,7 @@ func load_game() -> void:
 		current_save = SaveData.new()
 		current_save.game_version = GAME_VERSION
 		current_save.player_name = player_name
+	print("Game Loaded")
 
 func save_game() -> void:
 	if current_save == null:
@@ -22,9 +23,10 @@ func save_game() -> void:
 		current_save.player_name = player_name
 
 	DirAccess.make_dir_recursive_absolute("user://saves")
-	var err := ResourceSaver.save(current_save, SAVE_PATH)
+	var err: Error = ResourceSaver.save(current_save, SAVE_PATH)
 	if err != OK:
 		push_error("Failed to save game: %s" % err)
+	print("Game Saved")
 
 func get_item_state(item_key: StringName, instance_id: String) -> ItemSaveState:
 	if current_save == null:
@@ -36,10 +38,9 @@ func register_item_state(state: ItemSaveState) -> void:
 		load_game()
 	current_save.add_item_state(state)
 
-
 #-# DEBUG
 func debug_print_all_items() -> void:
-	var save := SaveLoadManager.current_save
+	var save: SaveData = SaveLoadManager.current_save
 	if save == null:
 		print("No save loaded")
 		return

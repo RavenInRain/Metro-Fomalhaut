@@ -15,11 +15,3 @@ static func gen_resource_id(res_key: StringName) -> String:
 		get_random_letter(),
 		randi() % 1000000
 	]
-
-static func gen_entry_id(entry_key: String) -> String:
-	return "%s_%s%d%s" % [
-		String(entry_key),
-		randi() % 1000,
-		get_random_letter(),
-		randi() % 100
-	]
