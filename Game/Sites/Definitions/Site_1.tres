@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="SiteDefinition" format=3 uid="uid://br4iab62rnsso"]
+
+[ext_resource type="Script" uid="uid://bq1baolv1ibt4" path="res://Game/Sites/Schema/Site_ContainerSchema.gd" id="1_ke5o0"]
+[ext_resource type="Script" uid="uid://c7uemkxtrlxjb" path="res://Game/Containers/Definitions/ContainerDefinition.gd" id="2_v53ja"]
+[ext_resource type="Script" uid="uid://dtjpy5acsei6r" path="res://Game/Containers/Schema/Container_SocketSchema.gd" id="3_1sm12"]
+[ext_resource type="Script" uid="uid://ckjawc5pbsj2q" path="res://Game/Sockets/Schema/Socket_ItemSchema.gd" id="4_lrujf"]
+[ext_resource type="Script" uid="uid://dpgo2thi7uy1n" path="res://Game/Items/Save/ItemSaveState.gd" id="5_g66x3"]
+[ext_resource type="Script" uid="uid://cbuqbtprkwt0m" path="res://Game/Sockets/Definitions/SocketDefinition.gd" id="6_0jxvm"]
+[ext_resource type="Script" uid="uid://cxfktnyw8rp0o" path="res://Game/Sites/Definitions/SiteVariantDefinition.gd" id="7_lo6om"]
+[ext_resource type="Script" uid="uid://0p23uuhqvrib" path="res://Game/Sites/Definitions/SiteDefinition.gd" id="8_gmc3n"]
+
+[sub_resource type="Resource" id="Resource_2entb"]
+script = ExtResource("5_g66x3")
+item_key = &"sword"
+durability = 2
+metadata/_custom_type_script = "uid://dpgo2thi7uy1n"
+
+[sub_resource type="Resource" id="Resource_xgn8y"]
+script = ExtResource("4_lrujf")
+item_key = &"sword"
+initial_state = SubResource("Resource_2entb")
+schema_id = "e_s_1"
+metadata/_custom_type_script = "uid://ckjawc5pbsj2q"
+
+[sub_resource type="Resource" id="Resource_ildvf"]
+script = ExtResource("6_0jxvm")
+socket_key = &"s1"
+item_entries = Array[ExtResource("4_lrujf")]([SubResource("Resource_xgn8y")])
+metadata/_custom_type_script = "uid://cbuqbtprkwt0m"
+
+[sub_resource type="Resource" id="Resource_jkggw"]
+script = ExtResource("3_1sm12")
+socket_def = SubResource("Resource_ildvf")
+schema_id = "s1"
+metadata/_custom_type_script = "uid://dtjpy5acsei6r"
+
+[sub_resource type="Resource" id="Resource_aqddv"]
+script = ExtResource("5_g66x3")
+item_key = &"sword"
+durability = 60
+metadata/_custom_type_script = "uid://dpgo2thi7uy1n"
+
+[sub_resource type="Resource" id="Resource_ij56b"]
+script = ExtResource("4_lrujf")
+item_key = &"sword"
+initial_state = SubResource("Resource_aqddv")
+schema_id = "e_s_2"
+metadata/_custom_type_script = "uid://ckjawc5pbsj2q"
+
+[sub_resource type="Resource" id="Resource_dhsws"]
+script = ExtResource("6_0jxvm")
+socket_key = &"s_2"
+item_entries = Array[ExtResource("4_lrujf")]([SubResource("Resource_ij56b")])
+metadata/_custom_type_script = "uid://cbuqbtprkwt0m"
+
+[sub_resource type="Resource" id="Resource_n5f3x"]
+script = ExtResource("3_1sm12")
+socket_def = SubResource("Resource_dhsws")
+schema_id = "s2"
+metadata/_custom_type_script = "uid://dtjpy5acsei6r"
+
+[sub_resource type="Resource" id="Resource_7ck30"]
+script = ExtResource("2_v53ja")
+container_key = &"base_container"
+socket_entries = Array[ExtResource("3_1sm12")]([SubResource("Resource_jkggw"), SubResource("Resource_n5f3x")])
+metadata/_custom_type_script = "uid://c7uemkxtrlxjb"
+
+[sub_resource type="Resource" id="Resource_kjbp6"]
+script = ExtResource("1_ke5o0")
+container_def = SubResource("Resource_7ck30")
+schema_id = "e_base_container"
+metadata/_custom_type_script = "uid://bq1baolv1ibt4"
+
+[sub_resource type="Resource" id="Resource_4l8e7"]
+script = ExtResource("7_lo6om")
+variant_key = &"default"
+site_display_name = "Default Site Variant"
+
+[resource]
+script = ExtResource("8_gmc3n")
+site_key = &"site_1"
+container_entries = Array[ExtResource("1_ke5o0")]([SubResource("Resource_kjbp6")])
+default_variant = SubResource("Resource_4l8e7")
+metadata/_custom_type_script = "uid://0p23uuhqvrib"
