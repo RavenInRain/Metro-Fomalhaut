@@ -2,6 +2,25 @@
 
 [ext_resource type="Script" uid="uid://csbobtii4n2wn" path="res://World/World.gd" id="1_eajxy"]
 [ext_resource type="Script" uid="uid://6s2j1mjyo82l" path="res://Game/UI/UI_Manager.gd" id="2_14dmw"]
+[ext_resource type="PackedScene" uid="uid://dpq88vdw6bnv" path="res://Game/Items/Visuals/ItemCard.tscn" id="4_2c32k"]
+
+[sub_resource type="GDScript" id="GDScript_14dmw"]
+script/source = "extends Control
+class_name InstanceTest
+
+@onready var ui: UIManager = %UI
+@export var item_view_scene: PackedScene
+
+func _ready() -> void:
+	ui.instance_requested.connect(instance_scene)
+
+func instance_scene() -> void:
+	var instanced = item_view_scene.instantiate()
+	%Spot_1.add_child(instanced)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eajxy"]
+bg_color = Color(0.24146843, 0.24146813, 0.24146819, 1)
 
 [node name="World" type="Node2D" unique_id=1964457153]
 script = ExtResource("1_eajxy")
@@ -10,25 +29,86 @@ script = ExtResource("1_eajxy")
 unique_name_in_owner = true
 script = ExtResource("2_14dmw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=1648709854]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Containers" type="MarginContainer" parent="UI" unique_id=449075867]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+metadata/_edit_use_anchors_ = true
 
-[node name="SaveGame" type="Button" parent="UI/VBoxContainer" unique_id=218838101]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Containers" unique_id=116821604]
+layout_mode = 2
+theme_override_constants/separation = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="DEBUG" type="VBoxContainer" parent="UI/Containers/HBoxContainer" unique_id=1648709854]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SaveGame" type="Button" parent="UI/Containers/HBoxContainer/DEBUG" unique_id=218838101]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Save Game"
 
-[node name="BuildSite_1" type="Button" parent="UI/VBoxContainer" unique_id=88836731]
+[node name="BuildSite_1" type="Button" parent="UI/Containers/HBoxContainer/DEBUG" unique_id=88836731]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Build Site"
 
-[node name="LoadGame" type="Button" parent="UI/VBoxContainer" unique_id=772595963]
+[node name="LoadGame" type="Button" parent="UI/Containers/HBoxContainer/DEBUG" unique_id=772595963]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Load Game"
 
-[connection signal="pressed" from="UI/VBoxContainer/SaveGame" to="UI" method="_on_save_game"]
-[connection signal="pressed" from="UI/VBoxContainer/BuildSite_1" to="UI" method="_on_build_site"]
-[connection signal="pressed" from="UI/VBoxContainer/LoadGame" to="UI" method="_on_load_game"]
+[node name="InstanceScene" type="Button" parent="UI/Containers/HBoxContainer/DEBUG" unique_id=780512033]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Instance Scene"
+
+[node name="ContainerBody" type="GridContainer" parent="UI/Containers/HBoxContainer" unique_id=1844757602]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 40
+columns = 3
+script = SubResource("GDScript_14dmw")
+item_view_scene = ExtResource("4_2c32k")
+
+[node name="Spot_3" type="PanelContainer" parent="UI/Containers/HBoxContainer/ContainerBody" unique_id=1319568341]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_eajxy")
+
+[node name="Spot_2" type="PanelContainer" parent="UI/Containers/HBoxContainer/ContainerBody" unique_id=1554638046]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_eajxy")
+
+[node name="C_Spot_1" type="PanelContainer" parent="UI/Containers/HBoxContainer/ContainerBody" unique_id=647177685]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_eajxy")
+
+[node name="Spot_1" type="VBoxContainer" parent="UI/Containers/HBoxContainer/ContainerBody/C_Spot_1" unique_id=434318173]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[connection signal="pressed" from="UI/Containers/HBoxContainer/DEBUG/SaveGame" to="UI" method="_on_save_game"]
+[connection signal="pressed" from="UI/Containers/HBoxContainer/DEBUG/BuildSite_1" to="UI" method="_on_build_site"]
+[connection signal="pressed" from="UI/Containers/HBoxContainer/DEBUG/LoadGame" to="UI" method="_on_load_game"]
+[connection signal="pressed" from="UI/Containers/HBoxContainer/DEBUG/InstanceScene" to="UI" method="_on_instance_scene"]

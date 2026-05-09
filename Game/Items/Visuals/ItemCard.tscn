@@ -1,26 +1,46 @@
 [gd_scene format=3 uid="uid://dpq88vdw6bnv"]
 
-[ext_resource type="Script" uid="uid://b4p0nbbn0h4hk" path="res://Game/Items/Visuals/ItemCardCore.gd" id="1_nma87"]
-
 [node name="ItemCard" type="Control" unique_id=1159983989]
+custom_minimum_size = Vector2(300, 100)
 layout_mode = 3
+anchor_top = -0.020833334
+anchor_bottom = -0.020833334
+offset_top = 20.0
+offset_right = 300.0
+offset_bottom = 140.0
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2693252]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1620.0
-offset_bottom = -880.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nma87")
 
-[node name="ItemName" type="Label" parent="." unique_id=974301035]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1770179975]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="DamageLabel" type="Label" parent="." unique_id=1760274335]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1747641903]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ItemName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=974301035]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="DamageLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1760274335]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 24
+text = "Damage"
+horizontal_alignment = 1
+vertical_alignment = 2

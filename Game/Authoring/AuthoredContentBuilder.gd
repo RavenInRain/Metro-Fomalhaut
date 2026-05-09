@@ -1,7 +1,10 @@
 extends RefCounted
 class_name AuthoredContentBuilder
 
-static func build_site(site_def: SiteDefinition) -> SiteRuntime:
+static func build_site(
+	site_def: SiteDefinition
+) -> SiteRuntime:
+	
 	var site: SiteRuntime = SiteRuntime.new()
 	site.site_key = site_def.site_key
 	site.origin_path = String(site_def.site_key)
@@ -21,7 +24,11 @@ static func build_site(site_def: SiteDefinition) -> SiteRuntime:
 	print("%s is built." % [site.site_key])
 	return site
 
-static func build_container(container_def: ContainerDefinition, origin_path: String) -> ContainerRuntime:
+static func build_container(
+	container_def: ContainerDefinition, 
+	origin_path: String
+) -> ContainerRuntime:
+	
 	var container := ContainerRuntime.new()
 	container.container_key = container_def.container_key
 	container.origin_path = origin_path
@@ -43,9 +50,14 @@ static func build_container(container_def: ContainerDefinition, origin_path: Str
 
 #-# SOCKETS
 
-static func build_socket(socket_def: SocketDefinition, origin_path: String) -> SocketRuntime:
+static func build_socket(
+	socket_def: SocketDefinition,
+	origin_path: String
+) -> SocketRuntime:
+	
 	var socket := SocketRuntime.new()
 	socket.socket_key = socket_def.socket_key
+	socket.definition = socket_def
 	socket.origin_path = origin_path
 
 	build_item_entries_for_socket(socket, socket_def.item_entries)
@@ -58,6 +70,7 @@ static func build_item_entries_for_socket(
 	socket: SocketRuntime,
 	item_entries: Array[SocketItemSchema]
 ) -> void:
+	
 	for item_schema in item_entries:
 		var item: ItemRuntime = build_item_from_socket_schema(
 			item_schema,
@@ -71,6 +84,7 @@ static func build_item_from_socket_schema(
 	item_schema: SocketItemSchema,
 	socket_path: String
 ) -> ItemRuntime:
+	
 	if item_schema == null:
 		push_error("Null ItemSocketschema at %s" % socket_path)
 		return null
