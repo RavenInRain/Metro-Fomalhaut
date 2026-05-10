@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://vdhona6bp121"]
+
+[ext_resource type="Script" uid="uid://bkik4yp28uluv" path="res://Game/Sockets/Visuals/SocketView.gd" id="1_cno8m"]
+[ext_resource type="PackedScene" uid="uid://dpq88vdw6bnv" path="res://Game/Items/Visuals/ItemCard.tscn" id="2_btogy"]
+
+[node name="SocketViewScene" type="Control" unique_id=371079468]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cno8m")
+item_view_scene = ExtResource("2_btogy")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=611222658]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1007802015]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer" unique_id=938913375]
+layout_mode = 2
+
+[node name="ItemHolder" type="VBoxContainer" parent="PanelContainer/MarginContainer/PanelContainer" unique_id=1169233628]
+unique_name_in_owner = true
+layout_mode = 2

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bnki7kg01obyk"]
+
+[ext_resource type="Script" uid="uid://dxskwyg4sdwxx" path="res://Game/Containers/Visuals/ContainerView.gd" id="1_mdtsv"]
+[ext_resource type="PackedScene" uid="uid://vdhona6bp121" path="res://Game/Sockets/Visuals/SocketViewScene.tscn" id="2_1fpef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfjs4"]
+bg_color = Color(0.3678931, 0.29092583, 0.3812727, 1)
+
+[node name="ContainerViewScene" type="Control" unique_id=1394685034]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_mdtsv")
+socket_view_scene = ExtResource("2_1fpef")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2062463841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hfjs4")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=105165146]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="SocketHolder" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1044178685]
+unique_name_in_owner = true
+layout_mode = 2

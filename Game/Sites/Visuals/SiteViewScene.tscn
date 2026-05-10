@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://vvtv8vgvdlf8"]
+
+[ext_resource type="Script" uid="uid://1cdhmvv1ltud" path="res://Game/Sites/Visuals/SiteView.gd" id="1_xdiaq"]
+[ext_resource type="PackedScene" uid="uid://bnki7kg01obyk" path="res://Game/Containers/Visuals/ContainerViewScene.tscn" id="2_ou1c8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfjs4"]
+bg_color = Color(0.294287, 0.34456626, 0.19422492, 1)
+
+[node name="SiteViewScene" type="Control" unique_id=1394685034]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xdiaq")
+container_view_scene = ExtResource("2_ou1c8")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2062463841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hfjs4")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=105165146]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ContainerHolder" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1044178685]
+unique_name_in_owner = true
+layout_mode = 2

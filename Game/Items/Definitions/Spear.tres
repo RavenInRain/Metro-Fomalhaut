@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://40hkymfa2ixx"]
+
+[ext_resource type="Script" uid="uid://0mf6ey5qhaft" path="res://Game/Items/Definitions/ItemDefinition.gd" id="1_bmm76"]
+
+[resource]
+script = ExtResource("1_bmm76")
+item_key = &"spear"
+display_name = "Spear"
+damage = 8
+metadata/_custom_type_script = "uid://0mf6ey5qhaft"

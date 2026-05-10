@@ -28,7 +28,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="ItemName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=974301035]
+[node name="ItemLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=974301035]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 2
@@ -36,11 +36,10 @@ theme_override_font_sizes/font_size = 24
 text = "Item Name"
 horizontal_alignment = 1
 
-[node name="DamageLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1760274335]
+[node name="DamageLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=895840226]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Damage"
 horizontal_alignment = 1
-vertical_alignment = 2

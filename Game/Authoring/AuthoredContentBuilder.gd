@@ -50,17 +50,59 @@ static func build_container(
 
 #-# SOCKETS
 
-static func build_socket(
-	socket_def: SocketDefinition,
-	origin_path: String
-) -> SocketRuntime:
-	
+static func build_socket(socket_def: SocketDefinition, origin_path: String) -> SocketRuntime:
 	var socket := SocketRuntime.new()
 	socket.socket_key = socket_def.socket_key
 	socket.definition = socket_def
-	socket.origin_path = origin_path
+	socket.location_path = origin_path
 
-	build_item_entries_for_socket(socket, socket_def.item_entries)
+	for item_schema in socket_def.item_entries:
+		if item_schema == null:
+			push_error("Null ItemSocketschema at %s" % origin_path)
+			continue
+
+		if item_schema.schema_id == &"":
+			push_error("ItemSocketschema has empty schema_id at %s" % origin_path)
+			continue
+
+		if item_schema.item_key == &"":
+			push_error("ItemSocketschema has empty item_key at %s/%s" % [
+				origin_path,
+				item_schema.schema_id
+			])
+			continue
+
+		if item_schema.initial_state == null:
+			push_error("ItemSocketschema has no initial_state at %s/%s" % [
+				origin_path,
+				item_schema.schema_id
+			])
+			continue
+
+		var item_path := "%s/%s" % [
+			origin_path,
+			item_schema.schema_id
+		]
+
+		var item := ItemFactory.create_item_from_authored_schema(
+			item_schema.item_key,
+			item_schema.initial_state,
+			item_path
+		)
+
+		if item == null:
+			continue
+
+		# Only insert here if the item currently belongs in this socket.
+		# This prevents moved items from reappearing at their authored origin.
+		if item.save_state.current_location_path == socket.location_path:
+			var inserted := socket.insert_item(item)
+
+			if not inserted:
+				push_warning("Could not insert item %s into socket %s. Capacity may be full." % [
+					item.save_state.instance_id,
+					socket.location_path
+				])
 
 	return socket
 
